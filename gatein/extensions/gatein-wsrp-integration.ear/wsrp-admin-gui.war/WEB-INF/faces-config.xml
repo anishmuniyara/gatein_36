@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+<!--
+  ~ JBoss, a division of Red Hat
+  ~ Copyright 2011, Red Hat Middleware, LLC, and individual
+  ~ contributors as indicated by the @authors tag. See the
+  ~ copyright.txt in the distribution for a full listing of
+  ~ individual contributors.
+  ~
+  ~ This is free software; you can redistribute it and/or modify it
+  ~ under the terms of the GNU Lesser General Public License as
+  ~ published by the Free Software Foundation; either version 2.1 of
+  ~ the License, or (at your option) any later version.
+  ~
+  ~ This software is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+  ~ Lesser General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Lesser General Public
+  ~ License along with this software; if not, write to the Free
+  ~ Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+  ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+  -->
+
+<faces-config
+   xmlns="http://java.sun.com/xml/ns/javaee"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:bridge="http://jboss.org/portletbridge"
+   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
+   version="2.1">
+
+   <application>
+      <navigation-handler>org.gatein.wsrp.admin.ui.RedirectOnNoConsumerNavigationHandler</navigation-handler>
+      <locale-config>
+         <default-locale>en</default-locale>
+         <supported-locale>fr</supported-locale>
+         <supported-locale>ja</supported-locale>
+      </locale-config>
+      <application-extension>
+         <bridge:excluded-attributes>
+            <bridge:excluded-attribute>i18n</bridge:excluded-attribute>
+         </bridge:excluded-attributes>
+      </application-extension>
+   </application>
+
+   <lifecycle>
+      <phase-listener>org.gatein.wsrp.admin.ui.RedirectToErrorIfWSRPUnavailablePhaseListener</phase-listener>
+   </lifecycle>
+
+   <converter>
+      <converter-for-class>org.gatein.wsrp.registration.LocalizedString</converter-for-class>
+      <converter-class>org.gatein.wsrp.admin.ui.LocalizedStringConverter</converter-class>
+   </converter>
+   <converter>
+      <converter-id>faces.convert.RegistrationProperty.Status</converter-id>
+      <converter-class>org.gatein.wsrp.admin.ui.StatusConverter</converter-class>
+   </converter>
+
+
+   <managed-bean>
+      <managed-bean-name>beanContext</managed-bean-name>
+      <managed-bean-class>org.gatein.wsrp.admin.ui.JSFBeanContext</managed-bean-class>
+      <managed-bean-scope>application</managed-bean-scope>
+   </managed-bean>
+   <managed-bean>
+      <managed-bean-name>version</managed-bean-name>
+      <managed-bean-class>org.gatein.wsrp.admin.ui.WSRPVersionBean</managed-bean-class>
+      <managed-bean-scope>application</managed-bean-scope>
+   </managed-bean>
+   <managed-bean>
+      <managed-bean-name>consumersMgr</managed-bean-name>
+      <managed-bean-class>org.gatein.wsrp.admin.ui.ConsumerManagerBean</managed-bean-class>
+      <managed-bean-scope>session</managed-bean-scope>
+      <managed-property>
+         <property-name>registry</property-name>
+         <property-class>org.gatein.wsrp.consumer.registry.ConsumerRegistry</property-class>
+         <value>#{applicationScope.ConsumerRegistry}</value>
+      </managed-property>
+      <managed-property>
+         <property-name>beanContext</property-name>
+         <property-class>org.gatein.wsrp.admin.ui.BeanContext</property-class>
+         <value>#{beanContext}</value>
+      </managed-property>
+      <managed-property>
+         <property-name>cancelOutcome</property-name>
+         <value>consumers</value>
+      </managed-property>
+   </managed-bean>
+   <managed-bean>
+      <managed-bean-name>consumer</managed-bean-name>
+      <managed-bean-class>org.gatein.wsrp.admin.ui.ConsumerBean</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+      <managed-property>
+         <property-name>beanContext</property-name>
+         <property-class>org.gatein.wsrp.admin.ui.BeanContext</property-class>
+         <value>#{beanContext}</value>
+      </managed-property>
+      <managed-property>
+         <property-name>id</property-name>
+         <value>#{sessionScope.consumerId}</value>
+      </managed-property>
+      <managed-property>
+         <property-name>manager</property-name>
+         <value>#{consumersMgr}</value>
+      </managed-property>
+      <managed-property>
+         <property-name>cancelOutcome</property-name>
+         <value>configureConsumer</value>
+      </managed-property>
+   </managed-bean>
+   <managed-bean>
+      <managed-bean-name>producer</managed-bean-name>
+      <managed-bean-class>org.gatein.wsrp.admin.ui.ProducerBean</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+      <managed-property>
+         <property-name>configurationService</property-name>
+         <property-class>org.gatein.wsrp.producer.config.ProducerConfigurationService</property-class>
+         <value>#{applicationScope.ProducerConfigurationService}</value>
+      </managed-property>
+      <managed-property>
+         <property-name>beanContext</property-name>
+         <property-class>org.gatein.wsrp.admin.ui.BeanContext</property-class>
+         <value>#{beanContext}</value>
+      </managed-property>
+      <managed-property>
+         <property-name>cancelOutcome</property-name>
+         <value>producer</value>
+      </managed-property>
+   </managed-bean>
+
+   <navigation-rule>
+      <navigation-case>
+         <from-outcome>consumers</from-outcome>
+         <to-view-id>/jsf/consumers/consumers.xhtml</to-view-id>
+      </navigation-case>
+      <navigation-case>
+         <from-outcome>configureConsumer</from-outcome>
+         <to-view-id>/jsf/consumers/editConsumer.xhtml</to-view-id>
+      </navigation-case>
+      <navigation-case>
+         <from-outcome>producer</from-outcome>
+         <to-view-id>/jsf/producer/producer.xhtml</to-view-id>
+      </navigation-case>
+      <navigation-case>
+         <from-outcome>confirmPropDeletion</from-outcome>
+         <to-view-id>/jsf/producer/confirmPropDeletion.xhtml</to-view-id>
+      </navigation-case>
+      <navigation-case>
+         <from-outcome>confirmEraseRegistration</from-outcome>
+         <to-view-id>/jsf/consumers/confirmEraseRegistration.xhtml</to-view-id>
+      </navigation-case>
+      <navigation-case>
+         <from-outcome>confirmDeleteConsumer</from-outcome>
+         <to-view-id>/jsf/consumers/confirmDeleteConsumer.xhtml</to-view-id>
+      </navigation-case>
+      <navigation-case>
+         <from-outcome>export</from-outcome>
+         <to-view-id>/jsf/consumers/exports/export.xhtml</to-view-id>
+      </navigation-case>
+      <navigation-case>
+         <from-outcome>export</from-outcome>
+         <to-view-id>/jsf/consumers/exports/export.xhtml</to-view-id>
+      </navigation-case>
+      <navigation-case>
+         <from-outcome>exports</from-outcome>
+         <to-view-id>/jsf/consumers/exports/exports.xhtml</to-view-id>
+      </navigation-case>
+      <navigation-case>
+         <from-outcome>exportDetail</from-outcome>
+         <to-view-id>/jsf/consumers/exports/exportDetail.xhtml</to-view-id>
+      </navigation-case>
+      <navigation-case>
+         <from-outcome>confirmDeleteExport</from-outcome>
+         <to-view-id>/jsf/consumers/exports/confirmDeleteExport.xhtml</to-view-id>
+      </navigation-case>
+      <navigation-case>
+         <from-outcome>import</from-outcome>
+         <to-view-id>/jsf/consumers/exports/import.xhtml</to-view-id>
+      </navigation-case>
+   </navigation-rule>
+   <navigation-rule>
+      <navigation-case>
+         <from-outcome>error</from-outcome>
+         <to-view-id>/jsf/error.xhtml</to-view-id>
+         <!--<redirect/>-->
+      </navigation-case>
+   </navigation-rule>
+</faces-config>

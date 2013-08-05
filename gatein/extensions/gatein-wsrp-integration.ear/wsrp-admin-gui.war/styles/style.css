@@ -1,0 +1,359 @@
+/*
+ * JBoss, a division of Red Hat
+ * Copyright 2012, Red Hat Middleware, LLC, and individual
+ * contributors as indicated by the @authors tag. See the
+ * copyright.txt in the distribution for a full listing of
+ * individual contributors.
+ *
+ * This is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2.1 of
+ * the License, or (at your option) any later version.
+ *
+ * This software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this software; if not, write to the Free
+ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+ */
+
+.wsrp-consumers-ui {
+   padding: 10px;
+}
+
+.wsrp-consumers-ui table {
+   border: 0; /*border-collapse: separate;*/
+}
+
+.wsrp-consumers-ui form {
+   margin: 0;
+   border: 0;
+}
+
+.wsrp-consumers-ui hr {
+   border-top-style: solid;
+}
+
+.wsrp-consumers-ui div.tab-container {
+   border-bottom: 1px solid #B3C0C7;
+   border-right: 1px solid #B3C0C7;
+   border-left: 1px solid #B3C0C7;
+   border-top: 1px solid #B3C0C7;
+   padding: 15px 0 10px 0;
+}
+
+/*  Override theme styles */
+.wsrp-consumers-ui h3.sectionTitle {
+   font-weight: bold;
+   color: #315896;
+   font-size: 11px;
+   padding: 3px 0 3px 3px;
+   background: url(../img/section-subHeader-bg.gif) repeat-x left top;
+   border: 1px solid #b9c6d7;
+}
+
+.wsrp-consumers-ui .portlet-section-header {
+   background: url(../img/pathBackground.png) repeat-x left;
+   font-weight: bold;
+   color: #656565;
+   font-size: 10px;
+   border-top: 1px solid #ddd;
+   border-bottom: 1px solid #999;
+   padding-left: 4px;
+}
+
+.wsrp-consumers-ui .portlet-section-header th {
+   background: url(../img/pathBackground.png) repeat-x left;
+   font-weight: bold;
+   color: #656565;
+   font-size: 10px;
+   border-top: 1px solid #ddd;
+   border-bottom: 1px solid #999;
+   padding-left: 4px;
+}
+
+.wsrp-consumers-ui .actionConfigure {
+   padding: 5px 5px 5px 20px;
+   background: url(../img/jbp-icon-set/settings.gif) no-repeat left;
+   line-height: 18px;
+   white-space: nowrap;
+}
+
+.wsrp-consumers-ui .actionRefresh {
+   padding: 5px 5px 5px 20px;
+   background: url(../img/jbp-icon-set/refresh.gif) no-repeat left;
+   line-height: 18px;
+   white-space: nowrap;
+}
+
+.wsrp-consumers-ui .actionRegister {
+   padding: 5px 5px 5px 24px;
+   background: url(../img/jbp-icon-set/register.gif) no-repeat left;
+   line-height: 18px;
+   white-space: nowrap;
+}
+
+.wsrp-consumers-ui .actionDeregister {
+   padding: 5px 5px 5px 24px;
+   background: url(../img/jbp-icon-set/deregister.gif) no-repeat left;
+   line-height: 18px;
+   white-space: nowrap;
+}
+
+.wsrp-consumers-ui .actionDelete {
+   padding: 5px 5px 5px 20px;
+   background: url(../img/jbp-icon-set/delete2.gif) no-repeat left;
+   line-height: 18px;
+   white-space: nowrap;
+}
+
+.wsrp-consumers-ui .actionActivate {
+   padding: 5px 5px 5px 23px;
+   background: url(../img/jbp-icon-set/activate.gif) no-repeat left;
+   line-height: 18px;
+   white-space: nowrap;
+}
+
+.wsrp-consumers-ui .actionDeactivate {
+   padding: 5px 5px 5px 20px;
+   background: url(../img/jbp-icon-set/deactivate.gif) no-repeat left;
+   line-height: 18px;
+   white-space: nowrap;
+}
+
+.wsrp-consumers-ui .actionImport {
+   padding: 5px 5px 5px 20px;
+   background: url(../img/jbp-icon-set/import.gif) no-repeat left;
+   line-height: 18px;
+   white-space: nowrap;
+}
+
+.wsrp-consumers-ui .actionExport {
+   padding: 5px 5px 5px 20px;
+   background: url(../img/jbp-icon-set/export.gif) no-repeat left;
+   line-height: 18px;
+   white-space: nowrap;
+}
+
+.wsrp-consumers-ui td {
+   border: 0;
+   padding-bottom: 2px;
+   padding-top: 2px;
+   vertical-align: top;
+}
+
+.wsrp-consumers-ui th {
+   text-align: left;
+   border: 0;
+   vertical-align: top;
+}
+
+.wsrp-consumers-ui .swatch {
+   border: 1px solid #aaa;
+   border-right-color: #555;
+   border-bottom-color: #555;
+   -moz-border-radius: 4px;
+   -webkit-border-radius: 4px;
+   margin: 1px;
+   padding: 2px 4px;
+}
+
+.wsrp-consumers-ui .active {
+   background-color: #C7DDB7;
+   font-weight: bold;
+}
+
+.wsrp-consumers-ui table.active {
+   border-bottom: 4px solid #C7DDB7;
+   border-top: 4px solid #C7DDB7;
+   background: inherit;
+   font-weight: normal;
+}
+
+.wsrp-consumers-ui li.active {
+   font-weight: normal;
+   padding-top: 4px;
+   padding-left: 3px;
+   padding-right: 2px;
+   background: inherit;
+}
+
+.wsrp-consumers-ui li.active:before {
+   content: "__";
+   padding: 1px;
+   background-color: #C7DDB7;
+   color: #C7DDB7;
+   border: 1px solid #999;
+}
+
+.wsrp-consumers-ui .inactive {
+   background-color: #EBD1B8;
+}
+
+.wsrp-consumers-ui table.inactive {
+   border-bottom: 4px solid #EBD1B8;
+   border-top: 4px solid #EBD1B8;
+   background: inherit;
+}
+
+.wsrp-consumers-ui li.inactive {
+   font-weight: normal;
+   padding-top: 4px;
+   padding-left: 3px;
+   padding-right: 2px;
+   background: inherit;
+}
+
+.wsrp-consumers-ui li.inactive:before {
+   content: "__";
+   padding: 1px;
+   background-color: #EBD1B8;
+   color: #EBD1B8;
+   border: 1px solid #999;
+}
+
+.wsrp-consumers-ui .needsRefresh {
+   font-style: italic;
+}
+
+.wsrp-consumers-ui .registration-prop-table {
+   text-align: left;
+   width: 100%;
+   margin-bottom: 3px;
+}
+
+.wsrp-consumers-ui .registration-prop-table.active {
+   border: 1px solid #C7DDB7;
+}
+
+.wsrp-consumers-ui .registration-prop-table.active th {
+   background: #C7DDB7 none;
+}
+
+.wsrp-consumers-ui .registration-prop-table.active .portlet-section-alternate {
+   background: #dcf0d0;
+}
+
+.wsrp-consumers-ui .registration-prop-table.inactive {
+   border: 1px solid #EBD1B8;
+}
+
+.wsrp-consumers-ui .registration-prop-table.inactive th {
+   background: #EBD1B8 none;
+}
+
+.wsrp-consumers-ui .registration-prop-table.inactive .portlet-section-alternate {
+   background: #f0f0dd;
+}
+
+.wsrp-consumers-ui .registration-prop-table .nameColumn {
+   width: 20%;
+}
+
+.wsrp-consumers-ui .registration-prop-table .descColumn {
+   width: 20%;
+}
+
+.wsrp-consumers-ui .registration-prop-table input[type="text"] {
+   width: 95%;
+}
+
+.wsrp-consumers-ui .portlet-section-buttonrow {
+   margin-top: 6px;
+   margin-bottom: 6px;
+   float: right;
+}
+
+.wsrp-consumers-ui #handle a.portlet-form-button {
+   padding: 2px;
+   margin-left: 30px;
+}
+
+.wsrp-consumers-ui .portlet-form-button {
+   padding: 2px;
+   margin: 0 3px;
+}
+
+.portlet-msg-status:before {
+   content: "Info: "
+}
+
+.portlet-msg-error:before {
+   content: "Error: "
+}
+
+.portlet-msg-alert:before {
+   content: "Warning: "
+}
+
+.wsrp-consumers-ui .portlet-area-header {
+   border: 1px solid #54708c;
+   font-weight: bold;
+   color: #fff;
+   font-size: 11px;
+   background-color: #5986b3;
+   padding: 2px 2px 2px 4px;
+   margin: 0;
+   display: block;
+}
+
+.wsrp-consumers-ui .portlet-area-body {
+   border: 1px solid #d5d5d5;
+   border-top: 0;
+   background-color: #fff;
+   padding: 4px;
+   margin: 0;
+   margin-bottom: .5em;
+   display: block;
+}
+
+.wsrp-consumers-ui .portlet-msg {
+   border: 1px solid #bbb;
+   margin: 22px auto;
+   padding: 11px;
+   width: 60%;
+}
+
+.wsrp-consumers-ui .portlet-msg-body {
+   position: relative;
+   top: -33px;
+   left: 33px;
+   width: 95%;
+}
+
+.wsrp-consumers-ui .wsrp-content-container {
+   margin: 0 auto 0 auto;
+   width: 100%;
+}
+
+.wsrp-consumers-ui .consumerNameColumn {
+   width: 37%;
+}
+
+.wsrp-consumers-ui .hasFailedColumn {
+   width: 15%;
+}
+
+.wsrp-consumers-ui .importColumn {
+   width: 7%;
+}
+
+.wsrp-consumers-ui #producer-wsdl {
+   border: 1px solid #fc6;
+   font-weight: bold;
+   color: #fff;
+   font-size: 11px;
+   background-color: #ffa200;
+   -moz-border-radius: 6px;
+   -webkit-border-radius: 6px;
+   border-radius: 6px;
+   padding: 5px;
+}
+
+.bold {
+   font-weight: bold;
+}

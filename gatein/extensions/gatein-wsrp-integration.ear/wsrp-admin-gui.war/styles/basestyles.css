@@ -1,0 +1,129 @@
+/*
+ * JBoss, a division of Red Hat
+ * Copyright 2010, Red Hat Middleware, LLC, and individual
+ * contributors as indicated by the @authors tag. See the
+ * copyright.txt in the distribution for a full listing of
+ * individual contributors.
+ *
+ * This is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2.1 of
+ * the License, or (at your option) any later version.
+ *
+ * This software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this software; if not, write to the Free
+ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+ */
+
+.zero {
+   margin: 0;
+   padding: 0;
+}
+
+.align-center {
+   text-align: center;
+}
+
+.align-center-margin {
+   margin: 0 auto 0 auto;
+}
+
+.float-left {
+   float: left;
+}
+
+.float-right {
+   float: right;
+}
+
+.align-left {
+   text-align: left;
+}
+
+.align-right {
+   text-align: right;
+}
+
+.align-top {
+   vertical-align: top;
+}
+
+.half-width {
+   width: 49%;
+}
+
+.quarter-width {
+   width: 24.9%;
+}
+
+.three-quarter-width {
+   width: 74.9%;
+}
+
+.full-width {
+   width: 100%;
+}
+
+.third-width {
+   width: 32.9%;
+}
+
+.two-third-width {
+   width: 65.9%;
+}
+
+.third-width-pad5 {
+   width: 32.5%;
+   padding: 5px;
+}
+
+.two-third-width-pad5 {
+   width: 65.5%;
+   padding: 5px;
+}
+
+.tenpx-top-bottom {
+   margin: 10px 0 10px 0;
+}
+
+.clear {
+   clear: both;
+}
+
+.pad5 {
+   padding: 5px;
+}
+
+.pad10 {
+   padding: 10px
+}
+
+.grey-border {
+   border: 1px solid #B3C0C7;
+}
+
+.bold {
+   font-weight: bold;
+}
+
+.dotted-blue-border {
+   font-weight: bold;
+   color: #315896;
+   font-size: 11px;
+   padding: 3px 0 3px 3px;
+   background-image: url(../img/section-subHeader-bg.gif);
+   background-position: left top;
+   background-repeat: repeat-x;
+   border: 1px solid #b9c6d7;
+}
+
+.dotted-blue-vert-rt {
+
+}
+

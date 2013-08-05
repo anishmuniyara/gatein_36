@@ -1,0 +1,69 @@
+<!--
+  ~ JBoss, a division of Red Hat
+  ~ Copyright 2012, Red Hat Middleware, LLC, and individual
+  ~ contributors as indicated by the @authors tag. See the
+  ~ copyright.txt in the distribution for a full listing of
+  ~ individual contributors.
+  ~
+  ~ This is free software; you can redistribute it and/or modify it
+  ~ under the terms of the GNU Lesser General Public License as
+  ~ published by the Free Software Foundation; either version 2.1 of
+  ~ the License, or (at your option) any later version.
+  ~
+  ~ This software is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+  ~ Lesser General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Lesser General Public
+  ~ License along with this software; if not, write to the Free
+  ~ Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+  ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+  -->
+
+<ui:decorate template="../common/template.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:ui="http://java.sun.com/jsf/facelets"
+             xmlns:h="http://java.sun.com/jsf/html"
+             xmlns:f="http://java.sun.com/jsf/core">
+
+   <ui:define name="topnav">
+      <h:form id="cons-temp-form" styleClass="cons-temp-form">
+
+         <span class="selectedTab"><h:commandLink id="consumersTab" action="consumers" value="#{i18n.nav_tabs_consumers}"/></span>
+         <span class="tab"><h:commandLink id="producer-link" value="#{i18n.nav_tabs_producer_config}" action="producer"/></span>
+
+      </h:form>
+   </ui:define>
+
+   <ui:define name="objectpath">
+
+      <div class="bar">
+         <f:subview id="add-consumer" rendered="#{showAddConsumer}">
+            <h:form id="createConsumer" styleClass="createObjectForm">
+               <span class="portlet-font bold"><h:outputLabel id="consumerNameLabel" for="consumerName" value="#{i18n.consumers_create_title}" /></span>&#160;
+               <h:inputText value="#{consumersMgr.selectedId}" id="consumerName"
+                            styleClass="portlet-form-input-field"
+                            label="Consumer Name" required="true"/>&#160;&#160;
+               <h:commandButton id="createConsumerButton" styleClass="ActionButton"
+                                action="#{consumersMgr.createConsumer}"
+                                value="#{i18n.consumers_create_submit}">
+                  <f:param name="id" value="#{consumersMgr.selectedId}"/>
+               </h:commandButton>
+            </h:form>
+         </f:subview>
+         <h:panelGroup rendered="#{! showAddConsumer}">
+            <strong>
+               <h:outputFormat value="#{i18n.path_consumers_consumer}">
+                  <f:param value="${consumer.id}"/>
+               </h:outputFormat>
+            </strong>
+               <span class="#{consumer.active ? 'active' : 'inactive'} #{consumer.refreshNeeded ? 'needsRefresh' : ''} swatch">
+                  #{consumer.active ? i18n.path_consumers_active : i18n.path_consumers_inactive}
+                  #{consumer.refreshNeeded ? i18n.path_consumers_refreshNeeded : ''}
+               </span>
+         </h:panelGroup>
+      </div>
+
+
+   </ui:define>
+</ui:decorate>

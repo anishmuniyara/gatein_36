@@ -1,0 +1,72 @@
+<!--
+  ~ JBoss, a division of Red Hat
+  ~ Copyright 2012, Red Hat Middleware, LLC, and individual
+  ~ contributors as indicated by the @authors tag. See the
+  ~ copyright.txt in the distribution for a full listing of
+  ~ individual contributors.
+  ~
+  ~ This is free software; you can redistribute it and/or modify it
+  ~ under the terms of the GNU Lesser General Public License as
+  ~ published by the Free Software Foundation; either version 2.1 of
+  ~ the License, or (at your option) any later version.
+  ~
+  ~ This software is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+  ~ Lesser General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Lesser General Public
+  ~ License along with this software; if not, write to the Free
+  ~ Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+  ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+  -->
+
+<ui:decorate template="../consumerTemplate.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:f="http://java.sun.com/jsf/core"
+             xmlns:ui="http://java.sun.com/jsf/facelets"
+             xmlns:h="http://java.sun.com/jsf/html">
+
+   <ui:define name="content">
+
+      <h:form id="import-form">
+         <h:dataTable id="portletsList" value="#{consumer.currentExport.exportedPortlets}" var="portlet"
+                      rowClasses="EvenRow,OddRow" styleClass="UIGrid" width="100%">
+            <h:column headerClass="importColumn">
+               <f:facet name="header">#{i18n.import_use}</f:facet>
+               <h:selectBooleanCheckbox id="selected" value="#{portlet.selected}"
+                                        valueChangeListener="#{portlet.select}"
+                                        immediate="true" onclick="this.form.submit()"/>
+            </h:column>
+
+            <h:column>
+               <f:facet name="header">#{i18n.import_available_portlets}</f:facet>
+               #{portlet.display}
+            </h:column>
+
+            <h:column>
+               <f:facet name="header">#{i18n.import_assign}</f:facet>
+               <h:selectOneListbox id="currentPage" value="#{portlet.page}"
+                                   valueChangeListener="#{portlet.selectCurrentPage}"
+                                   immediate="true"
+                                   onclick="this.form.submit()">
+                  <f:selectItems value="#{portlet.pages}"/>
+               </h:selectOneListbox>
+               <h:selectOneListbox id="currentWindow" value="#{portlet.window}" rendered="#{! empty portlet.page}"
+                                   valueChangeListener="#{portlet.selectCurrentWindow}"
+                                   immediate="true"
+                                   onclick="this.form.submit()">
+                  <f:selectItems value="#{portlet.windows}"/>
+               </h:selectOneListbox>
+            </h:column>
+         </h:dataTable>
+
+         <h:commandButton id="import" action="#{consumer.importPortlets(consumer.currentExport.export.exportTime)}" disabled="#{!consumer.currentExport.readyForImport}"
+                          value="#{i18n.import_import}" styleClass="ActionButton"/>
+         <h:commandLink action="#{consumersMgr.configureConsumer}" id="configure" styleClass="ActionButton">
+            <f:param name="id" value="#{consumer.id}"/>
+            #{i18n.portlets_table_configure}
+         </h:commandLink>
+         <h:commandLink id="exports" action="exports" value="#{i18n.export_detail_exports}" styleClass="ActionButton"/>
+      </h:form>
+   </ui:define>
+</ui:decorate>
